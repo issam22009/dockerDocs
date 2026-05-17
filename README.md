@@ -5,3 +5,20 @@ once we build the image, we need to run a container based on this image.
 
 to run the container, we use :
 docker run -p LOCAL_POST:THE_EXPOSED_PORT_FROM_DOSCKERFILE ID_IMAGE : -p is for publish. if we dont use the -p tag, the container won't expose it's port locally even thought it is precised in the dockerfile
+
+ EXPOSE 80 in the Dockerfile in the end is optional. It documents that a process in the container will expose this port. But you still need to then actually expose the port with -p when running docker run. So technically, -p is the only required part when it comes to listening on a port. Still, it is a best practice to also add EXPOSE in the Dockerfile to document this behavior.
+
+As an additional quick side-note: For all docker commands where an ID can be used, you don't always have to copy / write out the full id.
+
+You can also just use the first (few) character(s) - just enough to have a unique identifier.
+
+So instead of
+
+docker run abcdefg
+you could also run
+
+docker run abc
+or, if there's no other image ID starting with "a", you could even run just:
+
+docker run a
+This applies to ALL Docker commands where IDs are needed.
