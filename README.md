@@ -22,3 +22,7 @@ or, if there's no other image ID starting with "a", you could even run just:
 
 docker run a
 This applies to ALL Docker commands where IDs are needed.
+
+# cache image layers: 
+when we rerun a build command without any modifications, the build pass very quickly, it's because every result of a command (layers) is cached, and we use this result to build the image.
+when a modification is acted, and we run the build, we can see that some parts of the image construction are quick, it uses the cache, and when there is no cache, it reexecute the command.
