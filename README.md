@@ -18,11 +18,31 @@ docker run abcdefg
 you could also run
 
 docker run abc
-or, if there's no other image ID starting with "a", you could even run just:
+or, if there's no other image ID starting with "a", you could even run just: docker run a
 
-docker run a
 This applies to ALL Docker commands where IDs are needed.
 
 # cache image layers: 
 when we rerun a build command without any modifications, the build pass very quickly, it's because every result of a command (layers) is cached, and we use this result to build the image.
 when a modification is acted, and we run the build, we can see that some parts of the image construction are quick, it uses the cache, and when there is no cache, it reexecute the command.
+
+# Detele images and containers
+docker rm <Name1> <Name2>: connot remove a running container, so we need to stop it before, docker stop <Name>
+
+docker images : list all images
+docker rmi <ID-image>: delete image and all the layers of the image, this command deletes image that are no longer used, no containers based on this image, even the the stopped ones, you should remove all containers based on this image, then the rmi can be used.
+
+docker image prune : removes all unused images
+
+docker run -p 3000:80 -d --rm <id-image> : is used to start a new container based on a specified image, and it has several components that influence its behavior:
+
+docker run: This is the command used to create and start a new container from a Docker image.
+
+-p 3000:80: This option maps port 3000 on your host machine to port 80 on the container. This means that when you access localhost:3000 on your host, it will forward the traffic to port 80 of the running container. This is particularly useful for web applications or services running inside the container that listen on port 80.
+
+-d: This flag stands for "detach." It tells Docker to run the container in the background (detached mode), allowing you to continue using the terminal for other commands without keeping the container's output visible.
+
+--rm: This flag automatically removes the container once it stops running. This helps prevent clutter by ensuring that stopped containers do not occupy space and resources.
+
+<id-image>: This placeholder should be replaced with the actual image ID or image name (with a tag) that you want to use for running the container.
+
