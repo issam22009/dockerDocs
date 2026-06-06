@@ -51,3 +51,13 @@ docker run: This is the command used to create and start a new container from a 
 docker cp dummy <container_name>:/path/inside/container/test
 2 - Copying from a Container to Local Machine: To copy a folder or file from the container back to your local machine, you would use:
 docker cp <container_name>:/path/inside/container/test /local/path/destination
+
+# Naming and tagging Containers and images :
+Naming a Container
+When creating a container, you can specify its name using the --name flag:
+docker run --name <container_name> <image_name>
+
+To tag an already existing image, you would use the following command:
+docker tag <source_image> <new_image_name>:<tag>
+to tag an image when you're building it : 
+docker build -t <image-name>:<tag-name> .
