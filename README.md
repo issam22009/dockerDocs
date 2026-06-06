@@ -46,3 +46,8 @@ docker run: This is the command used to create and start a new container from a 
 
 <id-image>: This placeholder should be replaced with the actual image ID or image name (with a tag) that you want to use for running the container.
 
+# docker cp : 
+1 - Copying a Local Folder to a Container: To copy a folder named dummy (which contains files) from your local machine to a running container, the command would look like this:
+docker cp dummy <container_name>:/path/inside/container/test
+2 - Copying from a Container to Local Machine: To copy a folder or file from the container back to your local machine, you would use:
+docker cp <container_name>:/path/inside/container/test /local/path/destination
