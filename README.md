@@ -63,5 +63,12 @@ to tag an image when you're building it :
 ```docker build -t <image-name>:<tag-name> .```
 
 # Sharing Images : 
+let's say i want to push my image to dockerhub, i must follow these steps : 
+STEP 1 : i must have an account into dockerhub plateform, and then, i must create a repository, in my case i called it ```test-node-hello```.
+PS : this repository name should be the same as the name of my image in local.
+STEP 2 : i must log in to docker in my terminal using ```docker login -u <username>``` 
+STEP 3 : Push the image using : ```docker push username/image:tag```
+
+To pull the image : if the repo is public, everyone can pull it using : ```docker pull username/repository:tag```
 
  
